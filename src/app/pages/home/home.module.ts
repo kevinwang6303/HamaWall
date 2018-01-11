@@ -9,6 +9,9 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WallItemComponent } from './wall-item/wall-item.component';
+import { PostItemComponent } from './post-item/post-item.component';
+import { HmDefaultHttpClient } from '@hamastar/http';
+import { HomeService } from './home.service';
 
 @NgModule({
   imports: [
@@ -23,7 +26,12 @@ import { WallItemComponent } from './wall-item/wall-item.component';
   declarations: [
     HomeComponent,
     NavbarComponent,
-    WallItemComponent
+    WallItemComponent,
+    PostItemComponent
+  ],
+  providers: [
+    HmDefaultHttpClient,
+    HomeService
   ]
 })
 export class HomeModule { }

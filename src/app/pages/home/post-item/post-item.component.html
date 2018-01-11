@@ -1,0 +1,24 @@
+<div class="post-item">
+  <header class="header" fxLayoutAlign="space-around center">
+    <section fxLayout="column" fxLayoutAlign="center">
+      <h3>
+        分享你的生活吧
+      </h3>
+      <p>{{ today | date:'yyyy/MM/dd' }}</p>
+    </section>
+    <img class="avatar" src="assets/images/evan.jpg" alt="">
+  </header>
+  <section class="content" fxLayoutAlign="center">
+    <textarea class="reply-input" placeholder="kevinwang6303，你在想些什麼呢!"></textarea>
+  </section>
+  <section class="content-img">
+    <img [ngClass]="{'active':item.choice}" (click)="choiceItem(item)" class="img" src="assets/images/1.jpg" alt="" *ngFor="let item of array">
+  </section>
+  <footer fxLayoutAlign="space-between">
+    <div>
+      <button mat-raised-button color="accent">上傳圖片</button>
+      <button mat-raised-button color="warn">刪除</button>
+    </div>
+    <button mat-raised-button color="primary">分享</button>
+  </footer>
+</div>

@@ -1,0 +1,65 @@
+// .card {
+//   margin-bottom: 2em;
+//   .magin-right1em {
+//     margin-right: 1em;
+//   }
+//   .content {
+//     margin-top: 1em;
+//     .reply-input {
+//       width: 85%;
+//       border: none;
+//       outline: none;
+//       max-width: 90%;
+//       resize: none;
+//       height: 3em;
+//     }
+//   }
+// }
+.post-item {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  background: white;
+  margin-bottom: 2em;
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  .content {
+    border-bottom: 1px solid rgba(0, 0, 0, .08);
+    padding-bottom: 0.3em;
+    .reply-input {
+      width: 90%;
+      border: 1px solid rgba(0, 0, 0, .08);
+      outline: none;
+      max-width: 90%;
+      resize: none;
+      height: 4em;
+    }
+  }
+  .content-img {
+    border-bottom: 1px solid rgba(0, 0, 0, .08);
+    .img {
+      opacity: .5;
+      margin: .3em;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 666px) {
+  .post-item {
+    .content-img {
+      .img {
+        margin: .7em;
+      }
+    }
+  }
+}

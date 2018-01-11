@@ -10,8 +10,17 @@ import {
   EventService
 } from './service';
 
+
+import {
+  DbPostService
+} from './db-service';
+
 const SHARE_DIRECTIVES = [
   FixedMenuDirective
+];
+
+const DBSERVICE = [
+  DbPostService
 ];
 
 @NgModule({
@@ -30,7 +39,8 @@ export class SharedModule {
     return <ModuleWithProviders>{
       ngModule: SharedModule,
       providers: [
-        EventService
+        EventService,
+        DBSERVICE
       ]
     };
   }
