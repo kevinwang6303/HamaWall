@@ -9,8 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy:github": "ng build --prod --build-optimizer --base-href=https://kevinwang6303.github.io/chatroom-layout/ && ngh"
-
+    "deploy:github": "ng build --prod --build-optimizer --base-href=https://kevinwang6303.github.io/HamaWall/ && ngh"
   },
   "private": true,
   "dependencies": {
