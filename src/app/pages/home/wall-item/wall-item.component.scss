@@ -1,0 +1,26 @@
+.card {
+  margin-bottom: 2em;
+  .magin-right1em {
+    margin-right: 1em;
+  }
+  .load-more {
+    cursor: pointer;
+    color: #999;
+  }
+  .content {
+    p {
+      margin-bottom: .5em;
+    }
+  }
+  .footer {
+    padding-bottom: .2em;
+    .reply-input {
+      width: 85%;
+      border: none;
+      outline: none;
+      max-width: 90%;
+      resize: none;
+      height: 3em;
+    }
+  }
+}
