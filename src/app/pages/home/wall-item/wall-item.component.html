@@ -1,35 +1,37 @@
 <mat-card class="card">
   <mat-card-header>
-    <mat-card-title>kevinwang6303</mat-card-title>
-    <mat-card-subtitle>2018/01/11</mat-card-subtitle>
+    <mat-card-title>{{ post.userId }}</mat-card-title>
+    <mat-card-subtitle>{{ post.time | date:'yyyy/MM/dd' }}</mat-card-subtitle>
     <img mat-card-avatar src="assets/images/evan.jpg" />
+    <button mat-icon-button class="card-action" [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="deleteItem()">刪除</button>
+    </mat-menu>
   </mat-card-header>
-  <img mat-card-image src="assets/images/1.jpg" />
+  <img mat-card-image [src]="'http://localhost:50696/' + post.files[0].url" />
   <div>
     <mat-icon class="cursor-pointer  magin-right1em">favorite_border</mat-icon>
     <mat-icon class="cursor-pointer">chat_bubble_outline</mat-icon>
   </div>
   <mat-card-content class="content">
     <p class="reply">
-      <strong>kevinwang6303：</strong>
-      <span>游泳中!!!!!</span>
+      <strong>{{ post.userId }}：</strong>
+      <span>{{ post.content }}</span>
     </p>
-    <p class="reply">
-      <strong>XuPeiYao：</strong>
-      <span>這什麼爛東西</span>
+    <p class="reply" *ngFor="let item of post.reply">
+      <strong>{{ item.userId }}：</strong>
+      <span>{{ item.content }}</span>
     </p>
-    <p class="reply">
-      <strong>SHANG-TING：</strong>
-      <span>爛東西</span>
-    </p>
-    <p class="load-more">3小時前</p>
-    <p class="load-more">載入更多留言</p>
+    <p class="load-more">{{ post.time | agoTime }}</p>
+    <!-- <p class="load-more">載入更多留言</p> -->
   </mat-card-content>
 
   <mat-card-footer class="footer" fxLayoutAlign="center">
-    <textarea class="reply-input" placeholder="留言........"></textarea>
-    <button mat-mini-fab color="accent">
-      <mat-icon matTooltip="輸入">subdirectory_arrow_left</mat-icon>
+    <textarea class="reply-input" placeholder="留言........" [(ngModel)]="textContent"></textarea>
+    <button mat-icon-button color="primary" (click)="reply()">
+      <mat-icon>send</mat-icon>
     </button>
   </mat-card-footer>
 </mat-card>

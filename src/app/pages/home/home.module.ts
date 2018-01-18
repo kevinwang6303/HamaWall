@@ -2,16 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HmDefaultHttpClient } from '@hamastar/http';
+import { NgxfUploaderModule } from 'ngxf-uploader';
 
 import { SharedMaterialModule } from '../../shared-material/shared-material.module';
 import { SharedModule } from '../../shared/shared.module';
+import { ThemeModule } from '../../theme/theme.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { WallItemComponent } from './wall-item/wall-item.component';
-import { PostItemComponent } from './post-item/post-item.component';
-import { HmDefaultHttpClient } from '@hamastar/http';
 import { HomeService } from './home.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PostItemComponent } from './post-item/post-item.component';
+import { WallItemComponent } from './wall-item/wall-item.component';
+import { PostItemService } from './post-item/post-item.service';
+import { WallItemService } from './wall-item/wall-item.service';
 
 @NgModule({
   imports: [
@@ -21,7 +25,9 @@ import { HomeService } from './home.service';
     ReactiveFormsModule,
     SharedMaterialModule,
     SharedModule,
-    FlexLayoutModule
+    ThemeModule,
+    FlexLayoutModule,
+    NgxfUploaderModule
   ],
   declarations: [
     HomeComponent,
@@ -31,7 +37,9 @@ import { HomeService } from './home.service';
   ],
   providers: [
     HmDefaultHttpClient,
-    HomeService
+    HomeService,
+    PostItemService,
+    WallItemService
   ]
 })
 export class HomeModule { }

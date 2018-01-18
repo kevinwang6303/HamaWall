@@ -4,11 +4,15 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json -o",
-    "build": "ng build --prod",
+    "preclean": "rimraf package-lock.json && rimraf node_modules",
+    "clean": "ncu -a && ncu -d -a",
+    "start": "ng serve --proxy-config proxy.config.json -o",
+    "build": "ng build --prod --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "preupdateAll": "npm run clean",
+    "updateAll": "npm install",
     "deploy:github": "ng build --prod --build-optimizer --base-href=https://kevinwang6303.github.io/HamaWall/ && ngh"
   },
   "private": true,
@@ -30,6 +34,7 @@
     "core-js": "^2.4.1",
     "moment": "^2.20.1",
     "ng-reset-css": "^1.0.7",
+    "ngxf-uploader": "^1.2.3",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

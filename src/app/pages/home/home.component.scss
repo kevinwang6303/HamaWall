@@ -1,24 +1,24 @@
 .center {
-  margin: 7% auto;
+  margin: 7% auto 0 auto;
   width: 667px;
 }
 
 @media screen and (max-width: 1280px) {
   .center {
-    margin: 10% auto;
+    margin: 10% auto 0 auto;
   }
 }
 
 @media screen and (max-width: 768px) {
   .center {
-    margin: 15% auto;
+    margin: 15% auto 0 auto;
     width: 100%;
   }
 }
 
 @media screen and (max-width: 666px) {
   .center {
-    margin: 30% auto;
+    margin: 30% auto 0 auto;
     width: 100%;
   }
 }

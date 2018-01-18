@@ -1,5 +1,10 @@
 .card {
   margin-bottom: 2em;
+  .card-action {
+    position: absolute;
+    right: 0;
+    margin-right: 2em;
+  }
   .magin-right1em {
     margin-right: 1em;
   }

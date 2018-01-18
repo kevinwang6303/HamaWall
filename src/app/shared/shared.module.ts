@@ -12,15 +12,17 @@ import {
 
 
 import {
-  DbPostService
-} from './db-service';
+  SafePipe
+} from './pipes';
+
 
 const SHARE_DIRECTIVES = [
   FixedMenuDirective
 ];
 
-const DBSERVICE = [
-  DbPostService
+
+const SHARE_PIPES = [
+  SafePipe
 ];
 
 @NgModule({
@@ -28,10 +30,12 @@ const DBSERVICE = [
     CommonModule
   ],
   declarations: [
-    SHARE_DIRECTIVES
+    SHARE_DIRECTIVES,
+    SHARE_PIPES
   ],
   exports: [
-    SHARE_DIRECTIVES
+    SHARE_DIRECTIVES,
+    SHARE_PIPES
   ]
 })
 export class SharedModule {
@@ -39,8 +43,7 @@ export class SharedModule {
     return <ModuleWithProviders>{
       ngModule: SharedModule,
       providers: [
-        EventService,
-        DBSERVICE
+        EventService
       ]
     };
   }

@@ -9,16 +9,20 @@
     <img class="avatar" src="assets/images/evan.jpg" alt="">
   </header>
   <section class="content" fxLayoutAlign="center">
-    <textarea class="reply-input" placeholder="kevinwang6303，你在想些什麼呢!"></textarea>
+    <textarea class="reply-input" placeholder="kevinwang6303，你在想些什麼呢!" [(ngModel)]="textContent"></textarea>
   </section>
   <section class="content-img">
-    <img [ngClass]="{'active':item.choice}" (click)="choiceItem(item)" class="img" src="assets/images/1.jpg" alt="" *ngFor="let item of array">
+    <img [ngClass]="{'active':item.choice}" (click)="choiceItem(item)" class="img" [src]="item.blob | safe:'resourceUrl'" alt=""
+      *ngFor="let item of filesArray">
   </section>
   <footer fxLayoutAlign="space-between">
     <div>
-      <button mat-raised-button color="accent">上傳圖片</button>
-      <button mat-raised-button color="warn">刪除</button>
+      <button mat-raised-button color="accent" (click)="tempFiles.click()">
+        <input #tempFiles type="file" class="none" (ngxf-select)="uploadFile($event)" accept="image/*,.svg" multiple/> 上傳圖片
+      </button>
+      <button mat-raised-button color="warn" (click)="remove()">刪除選擇</button>
     </div>
-    <button mat-raised-button color="primary">分享</button>
+    <button mat-raised-button color="primary" (click)="shared()">分享
+    </button>
   </footer>
 </div>
