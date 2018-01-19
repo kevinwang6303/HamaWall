@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { PostItemService, IFilesArray, IPostInfo } from './post-item.service';
 import swal from 'sweetalert2';
-import { environment } from '../../../../environments/environment.prod';
+
 import { AutoDestroy } from '@hamastar/auto-destroy';
-import { IPost } from '../../../theme/models/hhd-model';
+import { IPost } from '../theme/models/hhd-model';
 import { BlockViewService } from '@hamastar/block-view';
 
 @Component({
@@ -12,7 +12,6 @@ import { BlockViewService } from '@hamastar/block-view';
   styleUrls: ['./post-item.component.scss']
 })
 export class PostItemComponent extends AutoDestroy implements OnInit {
-
   // 發文頁面用到的今天日期
   today = new Date();
 
@@ -22,17 +21,20 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
   // 要發文的內容
   textContent: string;
 
+  @Input() postId: string;
+
+  @Input() userId: string;
 
   @Output() addItem = new EventEmitter();
 
   constructor(
     private _postItemService: PostItemService,
     private _blockViewService: BlockViewService
-  ) { super(); }
-
-  ngOnInit() {
-
+  ) {
+    super();
   }
+
+  ngOnInit() {}
 
   // 選擇要刪掉的檔案
   choiceItem(item) {
@@ -40,20 +42,24 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
   }
 
   uploadFile(files: File[]) {
-
     // 限制max 10個檔案上傳
-    if (this.filesArray.length === 10 || this.filesArray.length + files.length > 10) {
+    if (
+      this.filesArray.length === 10 ||
+      this.filesArray.length + files.length > 10
+    ) {
       swal({
         title: '警告!',
         text: '最多只能上傳10個檔案',
-        type: 'warning',
+        type: 'warning'
       });
       return;
     }
 
     // 去service邏輯處理
-    this.filesArray = this._postItemService.uploadFunction(files, this.filesArray);
-
+    this.filesArray = this._postItemService.uploadFunction(
+      files,
+      this.filesArray
+    );
   }
 
   remove() {
@@ -62,36 +68,41 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
   }
 
   shared() {
-
     // 因為沒有經過base，所以要自己呼叫block起來
     this._blockViewService.block();
     // 塞好要新增的資訊
-    let info: IPostInfo = {
-      postId: environment.appOrPostId,
-      userId: 'kevinwang6303',
+    const info: IPostInfo = {
+      postId: this.postId,
+      userId: this.userId,
       content: this.textContent
     };
-    this._postItemService.uplaodFiles(this.filesArray, info)
+    this._postItemService
+      .uplaodFiles(this.filesArray, info)
       .takeUntil(this._destroy$)
-      .subscribe((x: any) => {
-        if (x.data) {
-          // 讓外面知道發文了
-          this.addItem.emit(x.data);
-          // 把照片清掉
-          this.filesArray = this._postItemService.removeFunction(this.filesArray, true);
-          // 嚴謹一點把array變0
-          this.filesArray.length = 0;
-          this.textContent = '';
-        this._blockViewService.unblock();
+      .subscribe(
+        (x: any) => {
+          if (x.data) {
+            // 讓外面知道發文了
+            this.addItem.emit(x.data);
+            // 把照片清掉
+            this.filesArray = this._postItemService.removeFunction(
+              this.filesArray,
+              true
+            );
+            // 嚴謹一點把array變0
+            this.filesArray.length = 0;
+            this.textContent = '';
+            this._blockViewService.unblock();
+          }
+        },
+        error => {
+          this._blockViewService.unblock();
+          swal({
+            title: '錯誤訊息!!!',
+            text: '伺服器發生錯誤，請聯絡管理者!',
+            type: 'error'
+          });
         }
-      }, error => {
-        this._blockViewService.unblock();
-        swal({
-          title: '錯誤訊息!!!',
-          text: '伺服器發生錯誤，請聯絡管理者!',
-          type: 'error'
-        });
-      });
+      );
   }
-
 }

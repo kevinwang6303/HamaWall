@@ -1,4 +1,5 @@
-import { DbPostService } from '../../../theme/db-service/db-post.service';
+import { Observable } from 'rxjs/Observable';
+import { DbPostService } from '../theme/db-service/db-post.service';
 
 import { Injectable } from '@angular/core';
 
@@ -16,10 +17,7 @@ export interface IFilesArray {
 
 @Injectable()
 export class PostItemService {
-
-  constructor(
-    private _dbPostService: DbPostService
-  ) { }
+  constructor(private _dbPostService: DbPostService) {}
 
   uploadFunction(files: File[], filesArray: IFilesArray[]) {
     for (let i = 0; i < files.length; i++) {
@@ -27,13 +25,11 @@ export class PostItemService {
       let tempBlob;
       window.URL.revokeObjectURL(tempBlob);
       tempBlob = window.URL.createObjectURL(files[i]);
-      filesArray.push(
-        {
-          blob: tempBlob,
-          file: files[i],
-          choice: false
-        }
-      );
+      filesArray.push({
+        blob: tempBlob,
+        file: files[i],
+        choice: false
+      });
     }
     return filesArray;
   }
@@ -42,7 +38,6 @@ export class PostItemService {
     // 把有點成true的remove調，remove前先清掉blob記憶體
 
     for (let i = 0; i < filesArray.length; i++) {
-
       if (all) {
         window.URL.revokeObjectURL(filesArray[i].blob);
         filesArray.splice(i, 1);
@@ -59,8 +54,7 @@ export class PostItemService {
     return filesArray;
   }
 
-  uplaodFiles(files: IFilesArray[], info: IPostInfo) {
-
+  uplaodFiles(files: IFilesArray[], info: IPostInfo): Observable<any> {
     return this._dbPostService.createFunction(files, info);
   }
 }

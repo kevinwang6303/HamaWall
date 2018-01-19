@@ -1,5 +1,5 @@
 <div class="center">
-  <app-post-item (addItem)="addItem($event)"></app-post-item>
+  <app-post-item (addItem)="addItem($event)" [userId]="userId" [postId]="postId"></app-post-item>
   <app-wall-item (deleteAction)="deleteAction($event)" *ngFor="let item of data.result" [post]="item"></app-wall-item>
   <div class="text-c" *ngIf="data.totalCount > data.result.length">
     <button mat-mini-fab color="accent">

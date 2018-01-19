@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { environment } from '../../../environments/environment.prod';
-import { AutoDestroy } from '../../shared/base/auto.destroy';
-import { IPagination, IPost } from '../../theme/models/hhd-model';
+import { AutoDestroy } from './shared/base/auto.destroy';
+import { IPagination, IPost } from './theme/models/hhd-model';
 import { HomeService } from './home.service';
+import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -12,24 +12,27 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends AutoDestroy implements OnInit {
-
   data: IPagination<IPost>;
+
+  @Input() userId: string;
+  @Input() postId: string;
 
   constructor(
     private _route: ActivatedRoute,
     private _homeService: HomeService
   ) {
     super();
-    this.data = this._route.snapshot.data['data'];
+    // this.data = this._route.snapshot.data['data'];
   }
 
   ngOnInit() {
+    this._homeService.get(this.postId).subscribe(x => {
+      this.data = x as IPagination<IPost>;
+    });
   }
 
   addItem(item: IPost) {
-
     this.data.result.unshift(item);
-
   }
 
   deleteAction(item: IPost) {
@@ -42,7 +45,8 @@ export class HomeComponent extends AutoDestroy implements OnInit {
   }
 
   loadMore() {
-    this._homeService.get(environment.appOrPostId, this.data.result.length)
+    this._homeService
+      .get(this.postId, this.data.result.length)
       .takeUntil(this._destroy$)
       .subscribe((x: IPagination<IPost>) => {
         for (let i = 0; i < x.result.length; i++) {
