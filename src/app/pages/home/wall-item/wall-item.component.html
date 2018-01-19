@@ -10,7 +10,39 @@
       <button mat-menu-item (click)="deleteItem()">刪除</button>
     </mat-menu>
   </mat-card-header>
-  <img mat-card-image [src]="'http://localhost:50696/' + post.files[0].url" />
+
+  <img *ngIf="post.files.length === 1" mat-card-image [src]="'http://localhost:50696/' + post.files[0].url"/>
+
+  <carousel-container *ngIf="post.files.length > 1">
+
+    <section carousel-items-container class="pane-container">
+
+      <article class="pane" *ngFor="let avatar of post.files; let i = index;"
+      carousel-item
+      #articleList
+      [style.backgroundImage]="('http://localhost:50696/' + avatar.url) | safe:'background-image'"
+      >
+      </article>
+
+      <!-- <img carousel-item class="magin-size" mat-card-image *ngFor="let item of post.files" [src]="'http://localhost:50696/' + item.url"
+      /> -->
+
+    </section>
+
+    <ng-template #carouselPrev>
+      <mat-icon class="icon">keyboard_arrow_left</mat-icon>
+    </ng-template>
+
+    <ng-template #carouselNext>
+      <mat-icon class="icon">keyboard_arrow_right</mat-icon>
+    </ng-template>
+
+    <ng-template #carouselDot let-model>
+      <div class="ball" [class.visible]="model.index === model.currentIndex"></div>
+    </ng-template>
+
+  </carousel-container>
+
   <div>
     <mat-icon class="cursor-pointer  magin-right1em">favorite_border</mat-icon>
     <mat-icon class="cursor-pointer">chat_bubble_outline</mat-icon>

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HmCarouselModule } from '@hamastar/hm-carousel';
 import { HmDefaultHttpClient } from '@hamastar/http';
 import { NgxfUploaderModule } from 'ngxf-uploader';
 
@@ -13,8 +14,8 @@ import { HomeComponent } from './home.component';
 import { HomeService } from './home.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostItemComponent } from './post-item/post-item.component';
-import { WallItemComponent } from './wall-item/wall-item.component';
 import { PostItemService } from './post-item/post-item.service';
+import { WallItemComponent } from './wall-item/wall-item.component';
 import { WallItemService } from './wall-item/wall-item.service';
 
 @NgModule({
@@ -27,7 +28,8 @@ import { WallItemService } from './wall-item/wall-item.service';
     SharedModule,
     ThemeModule,
     FlexLayoutModule,
-    NgxfUploaderModule
+    NgxfUploaderModule,
+    HmCarouselModule
   ],
   declarations: [
     HomeComponent,

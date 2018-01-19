@@ -1,5 +1,5 @@
 import { IPostInfo } from '../post-item/post-item.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener, ElementRef, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
 import { IPost } from '../../../theme/models/hhd-model';
 import { WallItemService } from './wall-item.service';
 import { AutoDestroy } from '../../../shared/base/auto.destroy';
@@ -9,7 +9,7 @@ import { AutoDestroy } from '../../../shared/base/auto.destroy';
   templateUrl: './wall-item.component.html',
   styleUrls: ['./wall-item.component.scss']
 })
-export class WallItemComponent extends AutoDestroy implements OnInit {
+export class WallItemComponent extends AutoDestroy implements OnInit, AfterViewInit {
 
   // po文內容
   @Input() post: IPost;
@@ -19,12 +19,23 @@ export class WallItemComponent extends AutoDestroy implements OnInit {
 
   textContent: string;
 
+  @ViewChildren('articleList') articleList: QueryList<ElementRef>;
+
   constructor(
     private _wallItemService: WallItemService
   ) { super(); }
 
   ngOnInit() {
 
+  }
+
+  ngAfterViewInit() {
+    this.getHeight();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private onResize(event) {
+    this.getHeight();
   }
 
   // 刪除的funtion
@@ -50,5 +61,12 @@ export class WallItemComponent extends AutoDestroy implements OnInit {
         this.post.reply.push(data);
         this.textContent = '';
       });
+  }
+
+  getHeight() {
+    this.articleList.forEach(x => {
+      // set height
+      x.nativeElement.style.height = x.nativeElement.style.width;
+    });
   }
 }

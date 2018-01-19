@@ -1,5 +1,3 @@
-import 'rxjs/add/operator/do';
-
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -7,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BlockViewModule } from '@hamastar/block-view';
+import { HmCarouselModule } from '@hamastar/hm-carousel';
 import { HmDefaultHttpClient } from '@hamastar/http';
 import { NgxfUploaderModule } from 'ngxf-uploader';
 
@@ -32,7 +31,8 @@ import { ThemeModule } from './theme/theme.module';
     SharedModule.forRoot(),
     BlockViewModule.forRoot(),
     ThemeModule.forRoot(),
-    NgxfUploaderModule.forRoot()
+    NgxfUploaderModule.forRoot(),
+    HmCarouselModule
   ],
   providers: [
     HmDefaultHttpClient

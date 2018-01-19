@@ -1,31 +1,79 @@
-.card {
-  margin-bottom: 2em;
-  .card-action {
-    position: absolute;
-    right: 0;
-    margin-right: 2em;
-  }
-  .magin-right1em {
-    margin-right: 1em;
-  }
-  .load-more {
-    cursor: pointer;
-    color: #999;
-  }
-  .content {
-    p {
-      margin-bottom: .5em;
+    .card {
+      margin-bottom: 2em;
+      .card-action {
+        position: absolute;
+        right: 0;
+        margin-right: 2em;
+      }
+      .magin-right1em {
+        margin-right: 1em;
+      }
+      .load-more {
+        cursor: pointer;
+        color: #999;
+      }
+      .content {
+        p {
+          margin-bottom: .5em;
+        }
+      }
+      .footer {
+        padding-bottom: .2em;
+        .reply-input {
+          width: 85%;
+          border: none;
+          outline: none;
+          max-width: 90%;
+          resize: none;
+          height: 3em;
+        }
+      }
     }
-  }
-  .footer {
-    padding-bottom: .2em;
-    .reply-input {
-      width: 85%;
-      border: none;
-      outline: none;
-      max-width: 90%;
-      resize: none;
-      height: 3em;
+
+    .ball {
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      background: rgb(239, 239, 239);
+      &.visible {
+        background: #3d7df7;
+      }
     }
-  }
-}
+
+    .pane-container {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      line-height: 0;
+      .magin-size {
+        margin: 0 0 16px 0;
+      }
+      .pane {
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+        background-attachment: scroll;
+        background-size: 100% 100%;
+        background-position: center;
+      }
+    }
+
+    .pane-container.transition {
+      transition: left .4s ease-in-out;
+    }
+
+    .icon {
+      font-size: 3em;
+      color: #cccccc;
+      padding-right: 1rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .pane {
+        width: calc(100% + 32px);
+        margin: 16px 0;
+      }
+    }
