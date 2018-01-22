@@ -10,7 +10,7 @@ import { IPagination, IPost } from '../models/hhd-model';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class DbPostService {
+export class HamaWallService {
   constructor(
     private _hmDefaultHttpClient: HmDefaultHttpClient,
     private _upload: NgxfUploaderService,
@@ -53,7 +53,7 @@ export class DbPostService {
         process: true,
         headers: new HttpHeaders().set(
           'authorization',
-          `Bearer ${sessionStorage.getItem('token')}`
+          `${sessionStorage.getItem('token')}`
         )
       });
     }

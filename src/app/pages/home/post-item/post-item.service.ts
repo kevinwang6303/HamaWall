@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
-import { DbPostService } from '../theme/db-service/db-post.service';
+import { HamaWallService } from '../theme/db-service/db-post.service';
 
 import { Injectable } from '@angular/core';
 
@@ -17,7 +17,7 @@ export interface IFilesArray {
 
 @Injectable()
 export class PostItemService {
-  constructor(private _dbPostService: DbPostService) {}
+  constructor(private _dbPostService: HamaWallService) {}
 
   uploadFunction(files: File[], filesArray: IFilesArray[]) {
     for (let i = 0; i < files.length; i++) {

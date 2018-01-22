@@ -49,12 +49,9 @@ export class WallItemComponent extends AutoDestroy
 
   // 刪除的funtion
   deleteItem() {
-    this._wallItemService
-      .deleteItem(this.post.id)
-      .takeUntil(this._destroy$)
-      .subscribe(x => {
-        this.deleteAction.emit(this.post);
-      });
+    this._wallItemService.deleteItem(this.post.id).subscribe(x => {
+      this.deleteAction.emit(this.post);
+    });
   }
 
   // 回文
@@ -62,16 +59,13 @@ export class WallItemComponent extends AutoDestroy
     // 塞好要新增的資訊
     const info: IPostInfo = {
       postId: this.post.id,
-      userId: 'kevinwang6303',
+      userId: '',
       content: this.textContent
     };
-    this._wallItemService
-      .replyItem([], info)
-      .takeUntil(this._destroy$)
-      .subscribe((data: IPost) => {
-        this.post.reply.push(data);
-        this.textContent = '';
-      });
+    this._wallItemService.replyItem([], info).subscribe((data: IPost) => {
+      this.post.reply.push(data);
+      this.textContent = '';
+    });
   }
 
   getHeight() {

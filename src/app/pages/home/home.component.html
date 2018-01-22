@@ -1,10 +1,10 @@
 <div class="center">
   <app-post-item (addItem)="addItem($event)" [userId]="userId" [postId]="postId"></app-post-item>
-  <app-wall-item (deleteAction)="deleteAction($event)" *ngFor="let item of data.result" [post]="item"></app-wall-item>
-  <div class="text-c" *ngIf="data.totalCount > data.result.length">
+  <app-wall-item (deleteAction)="deleteAction($event)" *ngFor="let item of data?.result" [post]="item"></app-wall-item>
+  <div class="text-c" *ngIf="data && (data.totalCount > data?.result?.length)">
     <button mat-mini-fab color="accent">
       <mat-icon matTooltip="輸入" (click)="loadMore()">expand_more</mat-icon>
     </button>
   </div>
 </div>
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->

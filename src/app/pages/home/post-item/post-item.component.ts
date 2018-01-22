@@ -76,33 +76,30 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
       userId: this.userId,
       content: this.textContent
     };
-    this._postItemService
-      .uplaodFiles(this.filesArray, info)
-      .takeUntil(this._destroy$)
-      .subscribe(
-        (x: any) => {
-          if (x.data) {
-            // 讓外面知道發文了
-            this.addItem.emit(x.data);
-            // 把照片清掉
-            this.filesArray = this._postItemService.removeFunction(
-              this.filesArray,
-              true
-            );
-            // 嚴謹一點把array變0
-            this.filesArray.length = 0;
-            this.textContent = '';
-            this._blockViewService.unblock();
-          }
-        },
-        error => {
+    this._postItemService.uplaodFiles(this.filesArray, info).subscribe(
+      (x: any) => {
+        if (x.data) {
+          // 讓外面知道發文了
+          this.addItem.emit(x.data);
+          // 把照片清掉
+          this.filesArray = this._postItemService.removeFunction(
+            this.filesArray,
+            true
+          );
+          // 嚴謹一點把array變0
+          this.filesArray.length = 0;
+          this.textContent = '';
           this._blockViewService.unblock();
-          swal({
-            title: '錯誤訊息!!!',
-            text: '伺服器發生錯誤，請聯絡管理者!',
-            type: 'error'
-          });
         }
-      );
+      },
+      error => {
+        this._blockViewService.unblock();
+        swal({
+          title: '錯誤訊息!!!',
+          text: '伺服器發生錯誤，請聯絡管理者!',
+          type: 'error'
+        });
+      }
+    );
   }
 }
