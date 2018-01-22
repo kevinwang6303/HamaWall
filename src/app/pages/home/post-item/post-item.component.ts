@@ -90,6 +90,18 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
           this.filesArray.length = 0;
           this.textContent = '';
           this._blockViewService.unblock();
+        } else if (x.id) {
+          // 讓外面知道發文了
+          this.addItem.emit(x);
+          // 把照片清掉
+          this.filesArray = this._postItemService.removeFunction(
+            this.filesArray,
+            true
+          );
+          // 嚴謹一點把array變0
+          this.filesArray.length = 0;
+          this.textContent = '';
+          this._blockViewService.unblock();
         }
       },
       error => {
