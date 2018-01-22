@@ -47,7 +47,6 @@ export class HomeComponent extends AutoDestroy implements OnInit {
   loadMore() {
     this._homeService
       .get(this.postId, this.data.result.length)
-      .takeUntil(this._destroy$)
       .subscribe((x: IPagination<IPost>) => {
         for (let i = 0; i < x.result.length; i++) {
           this.data.result.push(x.result[i]);

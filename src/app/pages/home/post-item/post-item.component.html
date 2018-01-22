@@ -9,7 +9,7 @@
     <img class="avatar" src="assets/images/avatar.jpg" alt="">
   </header>
   <section class="content" fxLayoutAlign="center">
-    <textarea class="reply-input" placeholder="kevinwang6303，你在想些什麼呢!" [(ngModel)]="textContent"></textarea>
+    <textarea class="reply-input" placeholder="你在想些什麼呢!" [(ngModel)]="textContent"></textarea>
   </section>
   <section class="content-img">
     <img [ngClass]="{'active':item.choice}" (click)="choiceItem(item)" class="img" [src]="item.blob | safe:'resourceUrl'" alt=""
