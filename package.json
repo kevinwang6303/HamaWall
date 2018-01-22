@@ -1,21 +1,21 @@
 {
-  "name": "hama-wall",
-  "version": "0.0.0",
+  "name": "@hamastar/hama-wall",
+  "version": "0.0.15",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "preclean": "rimraf package-lock.json && rimraf node_modules",
     "clean": "ncu -a && ncu -d -a",
     "start": "ng serve --proxy-config proxy.config.json -o",
-    "build": "ng build --prod --build-optimizer",
+    "build": "ng-packagr -p ng-package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "preupdateAll": "npm run clean",
     "updateAll": "npm install",
-    "deploy:github": "ng build --prod --build-optimizer --base-href=https://kevinwang6303.github.io/HamaWall/ && ngh"
+    "deploy:github":
+      "ng build --prod --build-optimizer --base-href=https://kevinwang6303.github.io/HamaWall/ && ngh"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^5.0.0",
     "@angular/cdk": "^5.0.4",
@@ -58,6 +58,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.4.2"
+    "typescript": "~2.4.2",
+    "ng-packagr": "^2.0.0-rc.9"
   }
 }

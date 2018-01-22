@@ -11,17 +11,21 @@ import {
   ViewChildren,
   AfterViewInit
 } from '@angular/core';
+<<<<<<< HEAD
 import { IPost } from '../../../theme/models/hhd-model';
+=======
+import { IPost } from '../theme/models/hhd-model';
+>>>>>>> 7a20c720958c31a158ee815a1cf8e316c107ab76
 import { WallItemService } from './wall-item.service';
-import { AutoDestroy } from '../../../shared/base/auto.destroy';
+import { AutoDestroy } from '../shared/base/auto.destroy';
 
 @Component({
   selector: 'app-wall-item',
   templateUrl: './wall-item.component.html',
   styleUrls: ['./wall-item.component.scss']
 })
-export class WallItemComponent extends AutoDestroy implements OnInit, AfterViewInit {
-
+export class WallItemComponent extends AutoDestroy
+  implements OnInit, AfterViewInit {
   // po文內容
   @Input() post: IPost;
 
@@ -32,13 +36,11 @@ export class WallItemComponent extends AutoDestroy implements OnInit, AfterViewI
 
   @ViewChildren('articleList') articleList: QueryList<ElementRef>;
 
-  constructor(
-    private _wallItemService: WallItemService
-  ) { super(); }
-
-  ngOnInit() {
-
+  constructor(private _wallItemService: WallItemService) {
+    super();
   }
+
+  ngOnInit() {}
 
   ngAfterViewInit() {
     this.getHeight();
@@ -60,9 +62,9 @@ export class WallItemComponent extends AutoDestroy implements OnInit, AfterViewI
   // 回文
   reply() {
     // 塞好要新增的資訊
-    let info: IPostInfo = {
+    const info: IPostInfo = {
       postId: this.post.id,
-      userId: 'kevinwang6303',
+      userId: '',
       content: this.textContent
     };
     this._wallItemService.replyItem([], info)

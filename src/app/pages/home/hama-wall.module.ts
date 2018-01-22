@@ -6,9 +6,9 @@ import { HmCarouselModule } from '@hamastar/hm-carousel';
 import { HmDefaultHttpClient } from '@hamastar/http';
 import { NgxfUploaderModule } from 'ngxf-uploader';
 
-import { SharedMaterialModule } from '../../shared-material/shared-material.module';
-import { SharedModule } from '../../shared/shared.module';
-import { ThemeModule } from '../../theme/theme.module';
+import { SharedMaterialModule } from './shared-material/shared-material.module';
+import { SharedModule } from './shared/shared.module';
+import { ThemeModule } from './theme/theme.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HomeService } from './home.service';
@@ -17,6 +17,8 @@ import { PostItemComponent } from './post-item/post-item.component';
 import { PostItemService } from './post-item/post-item.service';
 import { WallItemComponent } from './wall-item/wall-item.component';
 import { WallItemService } from './wall-item/wall-item.service';
+import { HamaWallService } from './theme/db-service/index';
+import { EventService } from './shared/service/index';
 
 @NgModule({
   imports: [
@@ -25,7 +27,7 @@ import { WallItemService } from './wall-item/wall-item.service';
     FormsModule,
     ReactiveFormsModule,
     SharedMaterialModule,
-    SharedModule,
+    SharedModule.forRoot(),
     ThemeModule,
     FlexLayoutModule,
     NgxfUploaderModule,
@@ -37,11 +39,13 @@ import { WallItemService } from './wall-item/wall-item.service';
     WallItemComponent,
     PostItemComponent
   ],
+  exports: [HomeComponent],
   providers: [
     HmDefaultHttpClient,
     HomeService,
     PostItemService,
-    WallItemService
+    WallItemService,
+    HamaWallService
   ]
 })
-export class HomeModule { }
+export class HamaWallModule {}

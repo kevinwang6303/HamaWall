@@ -11,14 +11,12 @@ import { NgxfUploaderModule } from 'ngxf-uploader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedMaterialModule } from './shared-material/shared-material.module';
-import { SharedModule } from './shared/shared.module';
-import { ThemeModule } from './theme/theme.module';
+import { SharedMaterialModule } from './pages/home/shared-material/shared-material.module';
+import { SharedModule } from './pages/home/shared/shared.module';
+import { ThemeModule } from './pages/home/theme/theme.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,9 +32,7 @@ import { ThemeModule } from './theme/theme.module';
     NgxfUploaderModule.forRoot(),
     HmCarouselModule
   ],
-  providers: [
-    HmDefaultHttpClient
-  ],
+  providers: [HmDefaultHttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

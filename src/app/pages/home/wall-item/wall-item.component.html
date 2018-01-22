@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>{{ post.userId }}</mat-card-title>
     <mat-card-subtitle>{{ post.time | date:'yyyy/MM/dd' }}</mat-card-subtitle>
-    <img mat-card-avatar src="assets/images/evan.jpg" />
+    <img mat-card-avatar src="assets/images/avatar.jpg" />
     <button mat-icon-button class="card-action" [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
@@ -11,17 +11,13 @@
     </mat-menu>
   </mat-card-header>
 
-  <img *ngIf="post.files.length === 1" mat-card-image [src]="'http://localhost:50696/' + post.files[0].url"/>
+  <img *ngIf="post.files.length === 1" mat-card-image [src]="'http://discuss.hamastar.com.tw/' + post.files[0].url" />
 
   <carousel-container *ngIf="post.files.length > 1">
 
     <section carousel-items-container class="pane-container">
 
-      <article class="pane" *ngFor="let avatar of post.files; let i = index;"
-      carousel-item
-      #articleList
-      [style.backgroundImage]="('http://localhost:50696/' + avatar.url) | safe:'background-image'"
-      >
+      <article class="pane" *ngFor="let avatar of post.files; let i = index;" carousel-item #articleList [style.backgroundImage]="('http://discuss.hamastar.com.tw/' + avatar.url) | safe:'background-image'">
       </article>
 
       <!-- <img carousel-item class="magin-size" mat-card-image *ngFor="let item of post.files" [src]="'http://localhost:50696/' + item.url"
