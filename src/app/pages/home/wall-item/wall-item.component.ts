@@ -11,7 +11,11 @@ import {
   ViewChildren,
   AfterViewInit
 } from '@angular/core';
+<<<<<<< HEAD
+import { IPost } from '../../../theme/models/hhd-model';
+=======
 import { IPost } from '../theme/models/hhd-model';
+>>>>>>> 7a20c720958c31a158ee815a1cf8e316c107ab76
 import { WallItemService } from './wall-item.service';
 import { AutoDestroy } from '../shared/base/auto.destroy';
 
@@ -49,9 +53,10 @@ export class WallItemComponent extends AutoDestroy
 
   // 刪除的funtion
   deleteItem() {
-    this._wallItemService.deleteItem(this.post.id).subscribe(x => {
-      this.deleteAction.emit(this.post);
-    });
+    this._wallItemService.deleteItem(this.post.id)
+      .subscribe(x => {
+        this.deleteAction.emit(this.post);
+      });
   }
 
   // 回文
@@ -62,10 +67,11 @@ export class WallItemComponent extends AutoDestroy
       userId: '',
       content: this.textContent
     };
-    this._wallItemService.replyItem([], info).subscribe((data: IPost) => {
-      this.post.reply.push(data);
-      this.textContent = '';
-    });
+    this._wallItemService.replyItem([], info)
+      .subscribe((data: IPost) => {
+        this.post.reply.push(data);
+        this.textContent = '';
+      });
   }
 
   getHeight() {
