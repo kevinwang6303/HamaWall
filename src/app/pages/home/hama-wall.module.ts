@@ -44,4 +44,4 @@ import { WallItemService } from './wall-item/wall-item.service';
     WallItemService
   ]
 })
-export class HomeModule {}
+export class HamaWallModule {}

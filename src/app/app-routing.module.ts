@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     // 登入
     path: 'home',
-    loadChildren: './pages/home/home.module#HomeModule'
+    loadChildren: './pages/home/hama-wall.module#HamaWallModule'
   }
 ];
 
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
