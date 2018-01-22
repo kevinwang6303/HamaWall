@@ -1,11 +1,11 @@
 import { AutoDestroy } from '../base/auto.destroy';
-import { Directive, OnInit, Input, ElementRef } from '@angular/core';
+import { Directive, OnInit, Input, ElementRef, OnDestroy } from '@angular/core';
 import { EventService } from '../service/event.service';
 
 @Directive({
   selector: '[appFixedMenu]'
 })
-export class FixedMenuDirective extends AutoDestroy implements OnInit {
+export class FixedMenuDirective extends AutoDestroy implements OnInit, OnDestroy {
 
   @Input() appFixedMenu: string;
   @Input() howFixed: string;
@@ -37,6 +37,10 @@ export class FixedMenuDirective extends AutoDestroy implements OnInit {
       case 'top':
         return window.scrollY > 0;
     }
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
   }
 
 }
