@@ -7,7 +7,7 @@ import { HomeService } from './home.service';
 import { AfterViewInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
+  selector: 'hm-hamawall',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
