@@ -1,6 +1,6 @@
 {
   "name": "@hamastar/hama-wall",
-  "version": "0.0.17",
+  "version": "0.0.18-fubon",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

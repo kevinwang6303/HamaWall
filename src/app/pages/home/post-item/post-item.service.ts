@@ -4,7 +4,8 @@ import { HamaWallService } from '../theme/db-service/db-post.service';
 import { Injectable } from '@angular/core';
 
 export interface IPostInfo {
-  postId: string;
+  fileId: string;
+  parentId?: string;
   userId: string;
   content: string;
 }

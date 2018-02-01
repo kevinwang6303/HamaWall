@@ -15,7 +15,7 @@ export class HomeComponent extends AutoDestroy implements OnInit {
   data: IPagination<IPost>;
 
   @Input() userId: string;
-  @Input() postId: string;
+  @Input() fileId: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class HomeComponent extends AutoDestroy implements OnInit {
   }
 
   ngOnInit() {
-    this._homeService.get(this.postId).subscribe(x => {
+    this._homeService.get(this.fileId).subscribe(x => {
       this.data = x as IPagination<IPost>;
     });
   }
@@ -46,7 +46,7 @@ export class HomeComponent extends AutoDestroy implements OnInit {
 
   loadMore() {
     this._homeService
-      .get(this.postId, this.data.result.length)
+      .get(this.fileId, this.data.result.length)
       .subscribe((x: IPagination<IPost>) => {
         for (let i = 0; i < x.result.length; i++) {
           this.data.result.push(x.result[i]);

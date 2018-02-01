@@ -9,7 +9,9 @@ export interface IPost {
   id: string;
   applicationId: string;
   parentId: string;
+  fileId: string;
   userId: string;
+  userName: string;
   content: string;
   time: string;
   files: IFile[];

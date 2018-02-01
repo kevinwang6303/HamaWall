@@ -21,7 +21,7 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
   // 要發文的內容
   textContent: string;
 
-  @Input() postId: string;
+  @Input() fileId: string;
 
   @Input() userId: string;
 
@@ -72,7 +72,7 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
     this._blockViewService.block();
     // 塞好要新增的資訊
     const info: IPostInfo = {
-      postId: this.postId,
+      fileId: this.fileId,
       userId: this.userId,
       content: this.textContent
     };

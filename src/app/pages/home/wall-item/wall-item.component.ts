@@ -58,7 +58,8 @@ export class WallItemComponent extends AutoDestroy
   reply() {
     // 塞好要新增的資訊
     const info: IPostInfo = {
-      postId: this.post.id,
+      parentId: this.post.parentId,
+      fileId: this.post.fileId,
       userId: '',
       content: this.textContent
     };

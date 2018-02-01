@@ -18,14 +18,11 @@ export class HamaWallService {
   ) {}
 
   get(appOrPostId, skip, take): Observable<IPagination<IPost>> {
-    return this._hmDefaultHttpClient.get(
-      'http://discuss.hamastar.com.tw/api/Post/{appOrPostId}',
-      {
-        appOrPostId: appOrPostId,
-        skip: skip,
-        take: take
-      }
-    );
+    return this._hmDefaultHttpClient.get('api/Discuss/{appOrPostId}', {
+      appOrPostId: appOrPostId,
+      skip: skip,
+      take: take
+    });
   }
 
   delete(id: string): Observable<void> {
@@ -38,7 +35,7 @@ export class HamaWallService {
       tempForm.append('content', info.content);
       return this._hmDefaultHttpClient.post(
         `api/Discuss/{postId}`,
-        { postId: info.postId },
+        { parentId: info.parentId || info.fileId },
         tempForm
       );
     } else {
@@ -47,7 +44,7 @@ export class HamaWallService {
         tempArray.push(files[i].file);
       }
       return this._upload.upload({
-        url: `api/Discuss/${info.postId}`,
+        url: `api/Discuss/${info.parentId || info.fileId}`,
         fields: info,
         files: tempArray,
         process: true,
