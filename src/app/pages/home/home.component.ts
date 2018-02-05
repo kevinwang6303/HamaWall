@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { AutoDestroy } from './shared/base/auto.destroy';
 import { IPagination, IPost } from './theme/models/hhd-model';
 import { HomeService } from './home.service';
 import { AfterViewInit } from '@angular/core';
@@ -11,7 +10,7 @@ import { AfterViewInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent extends AutoDestroy implements OnInit {
+export class HomeComponent implements OnInit {
   data: IPagination<IPost>;
 
   @Input() userId: string;
@@ -21,7 +20,6 @@ export class HomeComponent extends AutoDestroy implements OnInit {
     private _route: ActivatedRoute,
     private _homeService: HomeService
   ) {
-    super();
     // this.data = this._route.snapshot.data['data'];
   }
 

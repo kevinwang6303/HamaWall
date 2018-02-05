@@ -11,20 +11,15 @@ import {
   ViewChildren,
   AfterViewInit
 } from '@angular/core';
-<<<<<<< HEAD
-import { IPost } from '../../../theme/models/hhd-model';
-=======
 import { IPost } from '../theme/models/hhd-model';
->>>>>>> 7a20c720958c31a158ee815a1cf8e316c107ab76
 import { WallItemService } from './wall-item.service';
-import { AutoDestroy } from '../shared/base/auto.destroy';
 
 @Component({
   selector: 'app-wall-item',
   templateUrl: './wall-item.component.html',
   styleUrls: ['./wall-item.component.scss']
 })
-export class WallItemComponent extends AutoDestroy
+export class WallItemComponent
   implements OnInit, AfterViewInit {
   // po文內容
   @Input() post: IPost;
@@ -37,10 +32,9 @@ export class WallItemComponent extends AutoDestroy
   @ViewChildren('articleList') articleList: QueryList<ElementRef>;
 
   constructor(private _wallItemService: WallItemService) {
-    super();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
     this.getHeight();
