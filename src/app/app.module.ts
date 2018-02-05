@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { SharedMaterialModule } from './pages/home/shared-material/shared-material.module';
 import { SharedModule } from './pages/home/shared/shared.module';
 import { ThemeModule } from './pages/home/theme/theme.module';
+import { HmHttpModule } from '@hamastar/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,9 +31,10 @@ import { ThemeModule } from './pages/home/theme/theme.module';
     BlockViewModule.forRoot(),
     ThemeModule.forRoot(),
     NgxfUploaderModule.forRoot(),
-    HmCarouselModule
+    HmCarouselModule,
+    HmHttpModule.forRoot()
+
   ],
-  providers: [HmDefaultHttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
