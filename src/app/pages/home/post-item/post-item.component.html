@@ -2,7 +2,7 @@
   <header class="header" fxLayoutAlign="space-around center">
     <section fxLayout="column" fxLayoutAlign="center">
       <h3>
-        分享你的生活吧
+        分享你的建議吧
       </h3>
       <p>{{ today | date:'yyyy/MM/dd' }}</p>
     </section>
@@ -11,17 +11,17 @@
   <section class="content" fxLayoutAlign="center">
     <textarea class="reply-input" placeholder="你在想些什麼呢!" [(ngModel)]="textContent"></textarea>
   </section>
-  <section class="content-img">
+  <!--<section class="content-img">
     <img [ngClass]="{'active':item.choice}" (click)="choiceItem(item)" class="img" [src]="item.blob | safe:'resourceUrl'" alt=""
       *ngFor="let item of filesArray">
-  </section>
+  </section>-->
   <footer fxLayoutAlign="space-between">
-    <div>
+    <!--<div>
       <button mat-raised-button color="accent" (click)="tempFiles.click()">
         <input #tempFiles type="file" class="none" (ngxf-select)="uploadFile($event)" accept="image/*,.svg" multiple/> 上傳圖片
       </button>
       <button mat-raised-button color="warn" (click)="remove()">刪除選擇</button>
-    </div>
+    </div>-->
     <button mat-raised-button color="primary" (click)="shared()">分享
     </button>
   </footer>
