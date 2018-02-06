@@ -22,7 +22,6 @@ import { WallItemService } from './wall-item/wall-item.service';
 import { BlockViewModule } from '@hamastar/block-view';
 
 const HAMAWALL_DBSERVICE = [
-  HmDefaultHttpClient,
   HomeService,
   PostItemService,
   WallItemService,

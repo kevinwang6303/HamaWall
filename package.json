@@ -1,6 +1,6 @@
 {
   "name": "@hamastar/hama-wall",
-  "version": "0.0.29-fubon",
+  "version": "0.0.34-fubon",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -31,7 +31,7 @@
     "@angular/router": "^5.0.0",
     "@hamastar/block-view": "0.0.5",
     "@hamastar/hm-carousel": "^1.0.11",
-    "@hamastar/http": "0.0.7",
+    "@hamastar/http": "0.0.9",
     "core-js": "^2.4.1",
     "moment": "^2.20.1",
     "ng-reset-css": "^1.0.7",
