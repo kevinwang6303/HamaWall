@@ -35,7 +35,7 @@ export class HamaWallService {
       tempForm.append('content', info.content);
       return this._hmDefaultHttpClient.post(
         `api/Discuss/{postId}`,
-        { parentId: info.parentId || info.fileId },
+        { postId: info.parentId || info.fileId },
         tempForm
       );
     } else {
