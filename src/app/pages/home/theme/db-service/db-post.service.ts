@@ -1,6 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BlockViewService } from '@hamastar/block-view';
 import { HmDefaultHttpClient } from '@hamastar/http';
 import { NgxfUploaderService } from 'ngxf-uploader';
 import swal from 'sweetalert2';
@@ -13,9 +12,8 @@ import { Observable } from 'rxjs/Observable';
 export class HamaWallService {
   constructor(
     private _hmDefaultHttpClient: HmDefaultHttpClient,
-    private _upload: NgxfUploaderService,
-    private _blockViewService: BlockViewService
-  ) {}
+    private _upload: NgxfUploaderService
+  ) { }
 
   get(appOrPostId, skip, take): Observable<IPagination<IPost>> {
     return this._hmDefaultHttpClient.get('api/Discuss/{appOrPostId}', {

@@ -13,13 +13,11 @@ import { HomeService } from './home.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { PostItemService } from './post-item/post-item.service';
-import { SharedMaterialModule } from './shared-material/shared-material.module';
-import { SharedModule } from './shared/shared.module';
 import { HamaWallService } from './theme/db-service';
 import { ThemeModule } from './theme/theme.module';
 import { WallItemComponent } from './wall-item/wall-item.component';
 import { WallItemService } from './wall-item/wall-item.service';
-import { BlockViewModule } from '@hamastar/block-view';
+import { CommomMaterialModule } from '@hamastar/matpack';
 
 const HAMAWALL_DBSERVICE = [
   HomeService,
@@ -34,13 +32,11 @@ const HAMAWALL_DBSERVICE = [
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedMaterialModule,
-    SharedModule.forRoot(),
+    CommomMaterialModule,
     ThemeModule,
     FlexLayoutModule,
     NgxfUploaderModule.forRoot(),
     HmCarouselModule,
-    BlockViewModule.forRoot(),
     HmHttpModule.forRoot()
   ],
   declarations: [

@@ -2,16 +2,15 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { PostItemService, IFilesArray, IPostInfo } from './post-item.service';
 import swal from 'sweetalert2';
 
-import { AutoDestroy } from '@hamastar/auto-destroy';
 import { IPost } from '../theme/models/hhd-model';
-import { BlockViewService } from '@hamastar/block-view';
+import { BlockViewService } from '@hamastar/http';
 
 @Component({
   selector: 'app-post-item',
   templateUrl: './post-item.component.html',
   styleUrls: ['./post-item.component.scss']
 })
-export class PostItemComponent extends AutoDestroy implements OnInit {
+export class PostItemComponent implements OnInit {
   // 發文頁面用到的今天日期
   today = new Date();
 
@@ -31,10 +30,9 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
     private _postItemService: PostItemService,
     private _blockViewService: BlockViewService
   ) {
-    super();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   // 選擇要刪掉的檔案
   choiceItem(item) {

@@ -1,4 +1,3 @@
-import { BlockViewModule } from '@hamastar/block-view';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +10,7 @@ import { AgoTimePipe } from './pipes';
 const THEME_PIPES = [AgoTimePipe];
 
 @NgModule({
-  imports: [CommonModule, BlockViewModule],
+  imports: [CommonModule],
   declarations: [THEME_PIPES],
   exports: [THEME_PIPES]
 })
