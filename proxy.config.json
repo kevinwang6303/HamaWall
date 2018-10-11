@@ -1,6 +1,7 @@
 {
   "/api": {
-    "target": "http://localhost:61203",
-    "secure": false
+    "target": "http://discuss.hamastar.com.tw",
+    "secure": false,
+    "changeOrigin": true
   }
 }

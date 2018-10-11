@@ -68,7 +68,7 @@ export class PostItemComponent extends AutoDestroy implements OnInit {
     // 塞好要新增的資訊
     let info: IPostInfo = {
       postId: environment.appOrPostId,
-      userId: 'kevinwang6303',
+      userId: 'hamaadm',
       content: this.textContent
     };
     this._postItemService.uplaodFiles(this.filesArray, info)

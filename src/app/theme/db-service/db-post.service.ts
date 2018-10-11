@@ -18,7 +18,7 @@ export class DbPostService {
   ) { }
 
   get(appOrPostId, skip, take) {
-    return this._hmDefaultHttpClient.get('http://localhost:50696/api/Post/{appOrPostId}',
+    return this._hmDefaultHttpClient.get('api/Post/{appOrPostId}',
       {
         appOrPostId: appOrPostId,
         skip: skip,
